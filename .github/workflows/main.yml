@@ -41,13 +41,13 @@ jobs:
     - name: List files in target directory
       run: |
         pwd
-        ls -l ./target/
+        ls -l /home/runner/work/locationproducerservice/locationproducerservice
 
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
       with:
         app-name: locationpublisherservice
         slot-name: 'production'
-        package: /home/runner/work/locationproducerservice/locationproducerservice/target/locationproducerservice-0.0.1-SNAPSHOT.jar
+        package: /home/runner/work/locationproducerservice/locationproducerservice/locationproducerservice-0.0.1-SNAPSHOT.jar
     - name: Logout from Azure
       run: az logout
