@@ -24,6 +24,9 @@ jobs:
       run: |
         pwd
         ls -l ./target/
+    - name: Verify JAR file before deployment
+      run: |
+        ls -l /home/runner/work/locationproducerservice/locationproducerservice/target/
 
   deploy:
     needs: build
@@ -34,6 +37,11 @@ jobs:
       uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: List files in target directory
+      run: |
+        pwd
+        ls -l ./target/
 
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
