@@ -35,7 +35,7 @@ jobs:
       with:
         app-name: locationpublisherservice
         slot-name: 'production'
-        package: './target/locationproducerservice-0.0.1-SNAPSHOT.jar'
+        package: '/home/runner/work/locationproducerservice/locationproducerservice/target/locationproducerservice-0.0.1-SNAPSHOT.jar'
 
     - name: Logout from Azure
       run: az logout
