@@ -33,7 +33,7 @@ jobs:
     - name: List files in target directory
       run: |
         pwd
-        ls /home/runners/
+        ls /home/runner/work
 
 
     - name: Deploy to Azure Web App
