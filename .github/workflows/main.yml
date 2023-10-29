@@ -41,8 +41,7 @@ jobs:
     - name: List files in target directory
       run: |
         pwd
-        ls -l /home/runner/work/locationproducerservice/locationproducerservice
-        ls -l /home/runner/work/_temp/53cb7e9f-4ebc-4059-816d-ad00e51ef84c
+        ls -l /home/runner/work/_temp/
 
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
