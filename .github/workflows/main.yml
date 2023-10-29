@@ -46,7 +46,7 @@ jobs:
         ls -l /home/runner/work/
         ls -l /home/runner/work/_temp/
     - name: Search for JAR in _temp directory
-      run: find /home/runner/work/_temp/ -name "locationproducerservice-0.0.1-SNAPSHOT.jar"
+      run: find /home/runner/ -name "locationproducerservice-0.0.1-SNAPSHOT.jar"
 
 
     - name: Deploy to Azure Web App
