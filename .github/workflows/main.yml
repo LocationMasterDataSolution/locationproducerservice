@@ -30,11 +30,18 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - name: List files in target directory
+    - name: List files in current directory
       run: |
         pwd
-        ls /home/runner/work
-
+    
+    - name: List files in _actions directory
+      run: |
+        pwd
+        ls /home/runner/work/_actions
+        
+    - name: List files in _temp directory
+      run: |
+        ls /home/runner/work/_temp
 
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
