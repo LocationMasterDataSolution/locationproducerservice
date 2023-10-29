@@ -20,15 +20,14 @@ jobs:
     - name: Build with Maven
       run: mvn clean install
  
-    - name: List files in target directory
+    - name: List files
       run: |
         pwd
-        ls -l ./target/
-    - name: Verify JAR file before deployment
-      run: |
         ls -l /home/runner/work/locationproducerservice/locationproducerservice/target/
-        ls -l /home/runner/work/
-        ls -l /home/runner/work/_temp/
+        ls /home/
+        ls /home/runner/
+        ls /home/runner/work/
+        ls /home/runner/work/_temp/
 
   deploy:
     needs: build
@@ -43,10 +42,11 @@ jobs:
     - name: List files in target directory
       run: |
         pwd
-        ls -l /home/runner/work/
-        ls -l /home/runner/work/_temp/
-    - name: Search for JAR in _temp directory
-      run: find /home/runner/ -name "locationproducerservice-0.0.1-SNAPSHOT.jar"
+        ls /home/
+        ls /home/runner/
+        ls /home/runner/work/
+        ls /home/runner/work/_temp/
+        find / -name "locationproducerservice-0.0.1-SNAPSHOT.jar"
 
 
     - name: Deploy to Azure Web App
