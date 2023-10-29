@@ -19,15 +19,6 @@ jobs:
 
     - name: Build with Maven
       run: mvn clean install
- 
-    - name: List files
-      run: |
-        pwd
-        ls -l /home/runner/work/locationproducerservice/locationproducerservice/target/
-        ls /home/
-        ls /home/runner/
-        ls /home/runner/work/
-        ls /home/runner/work/_temp/
 
   deploy:
     needs: build
