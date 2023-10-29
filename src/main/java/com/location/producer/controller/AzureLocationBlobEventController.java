@@ -28,13 +28,17 @@ public class AzureLocationBlobEventController {
     @PostMapping("/blob-event")
     public ResponseEntity<String> handleBlobEvent(@RequestBody String blobEventData) {
         try {
+            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n");
+            System.out.println("Inside blob-event");
+            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n");
+
             // Convert blobEventData to a formatted JSON string
             String jsonString = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(blobEventData);
 
             // Log the JSON string using SLF4J
             logger.info(jsonString);
 
-            kafkaTemplate.send(TOPIC_NAME, blobEventData);
+            //kafkaTemplate.send(TOPIC_NAME, blobEventData);
 
             return ResponseEntity.ok("Blob event processed successfully.");
         } catch (Exception e) {
