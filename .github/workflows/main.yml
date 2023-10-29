@@ -27,6 +27,8 @@ jobs:
     - name: Verify JAR file before deployment
       run: |
         ls -l /home/runner/work/locationproducerservice/locationproducerservice/target/
+        ls -l /home/runner/work/
+        ls -l /home/runner/work/_temp/
 
   deploy:
     needs: build
@@ -41,6 +43,7 @@ jobs:
     - name: List files in target directory
       run: |
         pwd
+        ls -l /home/runner/work/
         ls -l /home/runner/work/_temp/
 
     - name: Deploy to Azure Web App
