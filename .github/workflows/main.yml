@@ -20,34 +20,34 @@ jobs:
     - name: Build with Maven
       run: mvn clean install
 
+    - name: Upload JAR as artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: locationproducerservice-jar
+        path: ./target/locationproducerservice-0.0.1-SNAPSHOT.jar
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
 
     steps:
+    - name: Download JAR artifact
+      uses: actions/download-artifact@v2
+      with:
+        name: locationproducerservice-jar
+        path: ./target/
+
     - name: Login to Azure
       uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-    - name: List files in current directory
-      run: |
-        pwd
-    
-    - name: List files in _actions directory
-      run: |
-        pwd
-        ls /home/runner/work/_actions
-        
-    - name: List files in _temp directory
-      run: |
-        ls /home/runner/work/_temp
 
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
       with:
         app-name: locationpublisherservice
         slot-name: 'production'
-        package: /home/runner/work/locationproducerservice/locationproducerservice/locationproducerservice-0.0.1-SNAPSHOT.jar
+        package: ./target/locationproducerservice-0.0.1-SNAPSHOT.jar
+
     - name: Logout from Azure
       run: az logout
